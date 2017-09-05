@@ -28,7 +28,6 @@ import org.apache.spark.internal.Logging
 import org.apache.spark.internal.config._
 import org.apache.spark.serializer.KryoSerializer
 import org.apache.spark.util.Utils
-import org.apache.spark.util.logging.LogJmxConfigurator
 
 /**
  * Configuration for a Spark application. Used to set various Spark parameters as key-value pairs.
@@ -64,9 +63,6 @@ class SparkConf(loadDefaults: Boolean) extends Cloneable with Logging with Seria
     })
     _reader
   }
-  
-  @transient private val logJmxConfigurator = LogJmxConfigurator
-  logJmxConfigurator.init()
 
   if (loadDefaults) {
     loadFromSystemProperties(false)
